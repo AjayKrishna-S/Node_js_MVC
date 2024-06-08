@@ -1,9 +1,11 @@
 [
     {
-        "uname":"ajay",
-        "password":"theking"
+        "name":"peter parker",
+        "uname":"spider",
+        "password":"man"
     },
     {
+        "name":"king kong",
         "uname":"king",
         "password":"kong"
     }

@@ -5,7 +5,8 @@ exports.loginPage = (req,res,next) =>{
 }
 
 exports.dashboard = (req,res,next) =>{
-    res.render("dashboard")
+    const user = getUser(req.query.uname);
+    res.render("dashboard",{ user })
 }
 
 exports.loginProcess = (req,res,next) =>{
@@ -13,7 +14,7 @@ exports.loginProcess = (req,res,next) =>{
     const user = getUser(req.body.uname)
 
     if(user !== null && user.password === req.body.password){
-        return res.redirect('/dashboard');
+        return res.redirect('/dashboard?uname='+req.body.uname);
     }else if(user === null){
         res.render('error',{message:"user not exist"})
     }else{
