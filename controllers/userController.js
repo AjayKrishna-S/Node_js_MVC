@@ -10,6 +10,13 @@ exports.dashboard = (req,res,next) =>{
 
 exports.loginProcess = (req,res,next) =>{
     //get user data
-    getUser(req.body.uname)
-    console.log(req.body.uname);
+    const user = getUser(req.body.uname)
+
+    if(user !== null && user.password === req.body.password){
+        return res.redirect('/dashboard');
+    }else if(user === null){
+        res.render('error',{message:"user not exist"})
+    }else{
+        res.render('error',{message:"invalid password"})
+    }
 }
